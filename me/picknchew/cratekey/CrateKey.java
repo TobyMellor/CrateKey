@@ -136,7 +136,11 @@
 /*     */   }
 /*     */ 
 /*     */   @EventHandler
-/*     */   public void onPlayerInteract(PlayerInteractEvent event) {
+/*     */   public void onPlayerInteract(PlayerInteractEvent event)
+/*     */   {
+/*     */     List locations;
+/*     */     String items;
+/*     */     Material material;
 /* 130 */     if (event.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
 /* 131 */       Player player = event.getPlayer();
 /* 132 */       String location = event.getClickedBlock().getLocation().getX() + "," + event.getClickedBlock().getLocation().getY() + "," + 
@@ -144,18 +148,6 @@
 /*     */ 
 /* 135 */       for (String keys : getConfig().getConfigurationSection("Rewards").getKeys(false))
 /*     */       {
-/*     */         List locations;
-/*     */         String items;
-/*     */         Material material;
-/*     */         Player player;
-/*     */         boolean removed;
-/*     */         String location;
-/*     */         Player player;
-/*     */         String location;
-/*     */         List currentList;
-/*     */         Object list;
-/*     */         Player player;
-/*     */         String location;
 /* 137 */         if (!getConfig().getStringList("Rewards." + keys + ".CrateLocations").isEmpty())
 /*     */         {
 /* 141 */           locations = getConfig().getStringList("Rewards." + keys + ".CrateLocations");
@@ -215,9 +207,9 @@
 /*     */     }
 /* 197 */     if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 /* 198 */       if (this.remove.contains(event.getPlayer().getName())) {
-/* 199 */         player = event.getPlayer();
-/* 200 */         removed = false;
-/* 201 */         location = event.getClickedBlock().getLocation().getX() + "," + event.getClickedBlock().getLocation().getY() + "," + 
+/* 199 */         Player player = event.getPlayer();
+/* 200 */         boolean removed = false;
+/* 201 */         String location = event.getClickedBlock().getLocation().getX() + "," + event.getClickedBlock().getLocation().getY() + "," + 
 /* 202 */           event.getClickedBlock().getLocation().getZ() + "," + event.getClickedBlock().getLocation().getWorld().getName();
 /*     */ 
 /* 204 */         this.remove.remove(player.getName());
@@ -252,12 +244,12 @@
 /*     */       }
 /*     */ 
 /* 235 */       if (this.add.containsKey(event.getPlayer().getName())) {
-/* 236 */         player = event.getPlayer();
+/* 236 */         Player player = event.getPlayer();
 /*     */ 
-/* 238 */         location = event.getClickedBlock().getLocation().getX() + "," + event.getClickedBlock().getLocation().getY() + "," + 
+/* 238 */         String location = event.getClickedBlock().getLocation().getX() + "," + event.getClickedBlock().getLocation().getY() + "," + 
 /* 239 */           event.getClickedBlock().getLocation().getZ() + "," + event.getClickedBlock().getLocation().getWorld().getName();
 /*     */ 
-/* 241 */         currentList = new ArrayList();
+/* 241 */         List currentList = new ArrayList();
 /*     */ 
 /* 243 */         if (!getConfig().getStringList("Rewards." + (String)this.add.get(player.getName()) + ".CrateLocations").isEmpty()) {
 /* 244 */           for (locations = getConfig().getStringList("Rewards." + (String)this.add.get(player.getName()) + ".CrateLocations").iterator(); locations.hasNext(); ) { list = (String)locations.next();
@@ -280,11 +272,11 @@
 /* 262 */         return;
 /*     */       }
 /*     */ 
-/* 265 */       player = event.getPlayer();
-/* 266 */       location = event.getClickedBlock().getLocation().getX() + "," + event.getClickedBlock().getLocation().getY() + "," + 
+/* 265 */       Player player = event.getPlayer();
+/* 266 */       String location = event.getClickedBlock().getLocation().getX() + "," + event.getClickedBlock().getLocation().getY() + "," + 
 /* 267 */         event.getClickedBlock().getLocation().getZ() + "," + event.getClickedBlock().getLocation().getWorld().getName();
 /*     */ 
-/* 269 */       for (list = getConfig().getConfigurationSection("Rewards").getKeys(false).iterator(); ((Iterator)list).hasNext(); ) { String keys = (String)((Iterator)list).next();
+/* 269 */       for (Object list = getConfig().getConfigurationSection("Rewards").getKeys(false).iterator(); ((Iterator)list).hasNext(); ) { String keys = (String)((Iterator)list).next();
 /*     */ 
 /* 271 */         if (!getConfig().getStringList("Rewards." + keys + ".CrateLocations").isEmpty())
 /*     */         {
@@ -640,7 +632,7 @@
 /*     */   }
 /*     */ }
 
-/* Location:           /Users/TobyMellor/Downloads/CrateKey(7).jar
+/* Location:           /Users/TobyMellor/Downloads/CrateKey(6).jar
  * Qualified Name:     me.picknchew.cratekey.CrateKey
  * JD-Core Version:    0.6.2
  */
