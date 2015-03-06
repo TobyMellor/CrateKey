@@ -1,0 +1,9 @@
+main: me.picknchew.cratekey.CrateKey
+name: CrateKey
+version: 1.0.9
+author: PickNChew
+description:    >
+              CrateKey V 1.0.9 by PickNChew
+commands:
+  cratekey:
+  
